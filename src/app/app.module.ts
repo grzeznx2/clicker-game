@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { AppState } from './store/app.state';
 import { gameDetailsReducer } from './store/gameDetails';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FarmComponent } from './features/farm/farm.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FarmComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +20,7 @@ import { gameDetailsReducer } from './store/gameDetails';
       },
       {}
     ),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent],

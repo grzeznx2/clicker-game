@@ -1,0 +1,10 @@
+.grass-blade {
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__segment {
+    width: 10rem;
+    height: 10rem;
+    background-color: green;
+  }
+}

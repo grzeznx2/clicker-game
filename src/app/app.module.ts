@@ -8,9 +8,10 @@ import { AppState } from './store/app.state';
 import { gameDetailsReducer } from './store/gameDetails';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FarmComponent } from './features/farm/farm.component';
+import { GrassBladeComponent } from './features/farm/grass-blade/grass-blade.component';
 
 @NgModule({
-  declarations: [AppComponent, FarmComponent],
+  declarations: [AppComponent, FarmComponent, GrassBladeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

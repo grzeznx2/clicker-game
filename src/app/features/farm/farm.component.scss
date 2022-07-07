@@ -1,5 +1,10 @@
 .farm {
+  width: 50rem;
+  height: 60rem;
+  border: 2px solid black;
+
   &__grass {
     display: flex;
+    height: 100%;
   }
 }

@@ -1,8 +1,11 @@
-.grass-blade {
+:host {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: flex-end;
   margin: 0 0.5rem;
+}
 
+.grass-blade {
   &__segment {
     width: 3rem;
     height: 5rem;

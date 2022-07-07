@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { pluck } from 'rxjs';
+import { interval, pluck } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
 import { selectExpadingFarm } from 'src/app/store/gameDetails/gameDetails.selectors';
 

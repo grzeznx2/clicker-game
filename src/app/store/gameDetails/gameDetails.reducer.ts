@@ -15,7 +15,7 @@ export const initialGameDetailsState: GameDetailsState = {
   expandingFarm: {
     startValue: 1,
     multiplier: 1,
-    level: 1,
+    level: 3,
     initialCost: 10000,
     costPerLevel: 320,
     isLevelAvailable: false,

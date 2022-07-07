@@ -1,3 +1,7 @@
 <div class="grass-blade">
-  <div *ngFor="let segment of segments" class="grass-blade__segment"></div>
+  <div
+    *ngFor="let segment of segments; let i = index"
+    (mouseenter)="harvest(i)"
+    class="grass-blade__segment"
+  ></div>
 </div>

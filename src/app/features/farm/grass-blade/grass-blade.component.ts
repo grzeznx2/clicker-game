@@ -10,13 +10,22 @@ export class GrassBladeComponent implements OnInit {
   public segments = [1];
   private maxSegmentsCount = 10;
 
-  constructor() {}
+  public constructor() {}
 
-  ngOnInit(): void {
+  get segmentsCount() {
+    return this.segments.length;
+  }
+
+  public ngOnInit(): void {
     interval(1000).subscribe(() => {
-      if (this.segments.length < this.maxSegmentsCount) {
+      if (this.segmentsCount < this.maxSegmentsCount) {
         this.segments = [...this.segments, 1];
       }
     });
+  }
+
+  public harvest(index: number) {
+    this.segments = Array.from({ length: this.segmentsCount - 1 - index });
+    console.log('EARNED', index + 1);
   }
 }

@@ -1,4 +1,5 @@
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { GameDetailsActions } from './gameDetails.actions';
 
 export interface GameDetailsState {
   expandingFarm: {
@@ -42,4 +43,16 @@ export const initialGameDetailsState: GameDetailsState = {
   },
 };
 
-export const gameDetailsReducer = createReducer(initialGameDetailsState);
+export const gameDetailsReducer = createReducer(
+  initialGameDetailsState,
+  on(
+    GameDetailsActions.INCREASE_FERTILIZER_QUALITY_LEVEL,
+    (state, { value }) => ({
+      ...state,
+      fetilizerQuality: {
+        ...state.fetilizerQuality,
+        level: state.fetilizerQuality.level + value,
+      },
+    })
+  )
+);

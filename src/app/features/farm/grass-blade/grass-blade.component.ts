@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { interval, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  concatMap,
+  exhaustMap,
+  interval,
+  mergeMap,
+  skipWhile,
+  Subject,
+  switchMap,
+  takeLast,
+  tap,
+} from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
 import { selectFertilizerQualityValue } from 'src/app/store/gameDetails/gameDetails.selectors';
 
@@ -12,6 +23,9 @@ import { selectFertilizerQualityValue } from 'src/app/store/gameDetails/gameDeta
 export class GrassBladeComponent implements OnInit {
   public segments = [1];
   private maxSegmentsCount = 10;
+  private gateOpen = new BehaviorSubject<boolean>(false);
+  private lastEmittedSpeed = 1;
+  private currentSpeed$ = new BehaviorSubject(1);
 
   public constructor(private readonly store: Store<AppState>) {}
 
@@ -22,8 +36,19 @@ export class GrassBladeComponent implements OnInit {
   public ngOnInit(): void {
     this.store
       .select(selectFertilizerQualityValue)
-      .pipe(switchMap((value) => interval(1000 / value)))
+      .pipe(tap((speed) => (this.lastEmittedSpeed = speed)))
+      .subscribe();
+
+    this.currentSpeed$
+      .pipe(
+        switchMap((speed) => {
+          this.gateOpen.next(true);
+          return interval(1000 / speed);
+        }),
+        tap(console.log)
+      )
       .subscribe(() => {
+        this.currentSpeed$.next(this.lastEmittedSpeed);
         if (this.segmentsCount < this.maxSegmentsCount) {
           this.segments = [...this.segments, 1];
         }
@@ -32,6 +57,6 @@ export class GrassBladeComponent implements OnInit {
 
   public harvest(index: number) {
     this.segments = Array.from({ length: this.segmentsCount - 1 - index });
-    console.log('EARNED', index + 1);
+    // console.log('EARNED', index + 1);
   }
 }

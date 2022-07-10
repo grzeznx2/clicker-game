@@ -14,3 +14,13 @@ export const selectFertilizerQualityValue = (state: AppState) => {
 
   return (initialValue + level * increasePerLevel) * multiplier;
 };
+
+export const selectMarketingStrategies = (state: AppState) =>
+  state.gameDetails.marketingStrategies;
+
+export const selectMarketingStrategiesValue = (state: AppState) => {
+  const { initialValue, level, increasePerLevel, multiplier } =
+    state.gameDetails.marketingStrategies;
+
+  return (initialValue + level * increasePerLevel) * multiplier;
+};

@@ -22,4 +22,10 @@ export class AppComponent {
   public increaseEFLevel() {
     this.store.dispatch(GameDetailsActions.INCREASE_EXPANDING_FARM_LEVEL());
   }
+
+  public increaseMSLevel() {
+    this.store.dispatch(
+      GameDetailsActions.INCREASE_MARKETING_STRATEGIES_LEVEL({ value: 1 })
+    );
+  }
 }

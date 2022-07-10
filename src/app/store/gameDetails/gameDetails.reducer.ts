@@ -2,6 +2,15 @@ import { createReducer, on } from '@ngrx/store';
 import { GameDetailsActions } from './gameDetails.actions';
 
 export interface GameDetailsState {
+  marketingStrategies: {
+    initialValue: number;
+    multiplier: number;
+    level: number;
+    initialCost: number;
+    costPerLevel: number;
+    increasePerLevel: number;
+    isLevelAvailable: boolean;
+  };
   expandingFarm: {
     initialValue: number;
     multiplier: number;
@@ -23,6 +32,15 @@ export interface GameDetailsState {
 }
 
 export const initialGameDetailsState: GameDetailsState = {
+  marketingStrategies: {
+    initialValue: 1,
+    multiplier: 1,
+    level: 1,
+    initialCost: 30,
+    costPerLevel: 1.1,
+    increasePerLevel: 0.5,
+    isLevelAvailable: false,
+  },
   expandingFarm: {
     initialValue: 1,
     multiplier: 1,
@@ -52,6 +70,16 @@ export const gameDetailsReducer = createReducer(
       fetilizerQuality: {
         ...state.fetilizerQuality,
         level: state.fetilizerQuality.level + value,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.INCREASE_MARKETING_STRATEGIES_LEVEL,
+    (state, { value }) => ({
+      ...state,
+      marketingStrategies: {
+        ...state.marketingStrategies,
+        level: state.marketingStrategies.level + value,
       },
     })
   ),

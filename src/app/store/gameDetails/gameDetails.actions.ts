@@ -7,6 +7,10 @@ export const GameDetailsActions = {
     `${REDUCER} INCREASE_FERTILIZER_QUALITY_LEVEL`,
     props<{ value: number }>()
   ),
+  INCREASE_MARKETING_STRATEGIES_LEVEL: createAction(
+    `${REDUCER} INCREASE_MARKETING_STRATEGIES_LEVEL`,
+    props<{ value: number }>()
+  ),
   INCREASE_EXPANDING_FARM_LEVEL: createAction(
     `${REDUCER} INCREASE_EXPANDING_FARM_LEVEL`
   ),

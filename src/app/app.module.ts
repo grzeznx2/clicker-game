@@ -14,6 +14,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ScreenComponent } from './features/screen/screen.component';
 import { HeaderComponent } from './features/header/header.component';
 import { CurrentLevelEffects } from './store/currentLevel/currentLevel.effects';
+import { UpgradesComponent } from './features/upgrades/upgrades.component';
+import { GameDetailsComponent } from './features/upgrades/game-details/game-details.component';
+import { UpgradeComponent } from './features/upgrades/upgrade/upgrade.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { CurrentLevelEffects } from './store/currentLevel/currentLevel.effects';
     GrassBladeComponent,
     ScreenComponent,
     HeaderComponent,
+    UpgradesComponent,
+    GameDetailsComponent,
+    UpgradeComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,8 +45,7 @@ export class GrassBladeComponent implements OnInit {
         switchMap((speed) => {
           this.gateOpen.next(true);
           return interval(1000 / speed);
-        }),
-        tap(console.log)
+        })
       )
       .subscribe(() => {
         this.currentSpeed$.next(this.lastEmittedSpeed);

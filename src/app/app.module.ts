@@ -9,6 +9,7 @@ import { gameDetailsReducer } from './store/gameDetails';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FarmComponent } from './features/farm/farm.component';
 import { GrassBladeComponent } from './features/farm/grass-blade/grass-blade.component';
+import { currentLevelReducer } from './store/currentLevel';
 
 @NgModule({
   declarations: [AppComponent, FarmComponent, GrassBladeComponent],
@@ -18,6 +19,7 @@ import { GrassBladeComponent } from './features/farm/grass-blade/grass-blade.com
     StoreModule.forRoot<AppState>(
       {
         gameDetails: gameDetailsReducer,
+        currentLevel: currentLevelReducer,
       },
       {}
     ),

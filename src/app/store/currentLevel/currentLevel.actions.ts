@@ -8,4 +8,8 @@ export const CurrentLevelActions = {
     `${REDUCER} HARVEST_GRASS`,
     props<{ value: number }>()
   ),
+  UPDATE_GRASS_AND_MONEY: createAction(
+    `${REDUCER} UPDATE_GRASS_AND_MONEY`,
+    props<{ grassAmount: number; grassPrice: number }>()
+  ),
 };

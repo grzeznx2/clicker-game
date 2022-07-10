@@ -35,7 +35,7 @@ export const initialGameDetailsState: GameDetailsState = {
   marketingStrategies: {
     initialValue: 1,
     multiplier: 1,
-    level: 1,
+    level: 0,
     initialCost: 30,
     costPerLevel: 1.1,
     increasePerLevel: 0.5,

@@ -10,9 +10,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FarmComponent } from './features/farm/farm.component';
 import { GrassBladeComponent } from './features/farm/grass-blade/grass-blade.component';
 import { currentLevelReducer } from './store/currentLevel';
+import { EffectsModule } from '@ngrx/effects';
+import { ScreenComponent } from './features/screen/screen.component';
+import { HeaderComponent } from './features/header/header.component';
+import { CurrentLevelEffects } from './store/currentLevel/currentLevel.effects';
 
 @NgModule({
-  declarations: [AppComponent, FarmComponent, GrassBladeComponent],
+  declarations: [
+    AppComponent,
+    FarmComponent,
+    GrassBladeComponent,
+    ScreenComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +34,7 @@ import { currentLevelReducer } from './store/currentLevel';
       {}
     ),
     StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CurrentLevelEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

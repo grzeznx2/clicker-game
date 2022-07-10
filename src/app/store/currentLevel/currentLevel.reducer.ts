@@ -17,8 +17,16 @@ export const currentLevelReducer = createReducer(
     ...state,
     money: state.money + value,
   })),
-  on(CurrentLevelActions.HARVEST_GRASS, (state, { value }) => ({
-    ...state,
-    grassHarvested: state.grassHarvested + value,
-  }))
+  on(
+    CurrentLevelActions.UPDATE_GRASS_AND_MONEY,
+    (state, { grassAmount, grassPrice }) => ({
+      ...state,
+      grassHarvested: state.grassHarvested + grassAmount,
+      money: state.money + grassAmount * grassPrice,
+    })
+  )
+  // on(CurrentLevelActions.HARVEST_GRASS, (state, { value }) => ({
+  //   ...state,
+  //   grassHarvested: state.grassHarvested + value,
+  // }))
 );

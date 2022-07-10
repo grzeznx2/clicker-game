@@ -13,6 +13,7 @@ import {
   tap,
 } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
+import { CurrentLevelActions } from 'src/app/store/currentLevel';
 import { selectFertilizerQualityValue } from 'src/app/store/gameDetails/gameDetails.selectors';
 
 @Component({
@@ -57,6 +58,9 @@ export class GrassBladeComponent implements OnInit {
 
   public harvest(index: number) {
     this.segments = Array.from({ length: this.segmentsCount - 1 - index });
+    this.store.dispatch(
+      CurrentLevelActions.HARVEST_GRASS({ value: index + 1 })
+    );
     // console.log('EARNED', index + 1);
   }
 }

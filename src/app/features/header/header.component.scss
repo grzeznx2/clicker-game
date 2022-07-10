@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.6rem;
+
+  &__value {
+    padding: 1rem;
+  }
+}

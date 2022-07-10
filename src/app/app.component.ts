@@ -18,4 +18,8 @@ export class AppComponent {
       GameDetailsActions.INCREASE_FERTILIZER_QUALITY_LEVEL({ value: 1 })
     );
   }
+
+  public increaseEFLevel() {
+    this.store.dispatch(GameDetailsActions.INCREASE_EXPANDING_FARM_LEVEL());
+  }
 }

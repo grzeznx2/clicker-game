@@ -54,5 +54,12 @@ export const gameDetailsReducer = createReducer(
         level: state.fetilizerQuality.level + value,
       },
     })
-  )
+  ),
+  on(GameDetailsActions.INCREASE_EXPANDING_FARM_LEVEL, (state) => ({
+    ...state,
+    expandingFarm: {
+      ...state.expandingFarm,
+      level: state.expandingFarm.level + 1,
+    },
+  }))
 );

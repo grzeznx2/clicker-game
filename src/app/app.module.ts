@@ -18,6 +18,8 @@ import { UpgradesComponent } from './features/upgrades/upgrades.component';
 import { GameDetailsComponent } from './features/upgrades/game-details/game-details.component';
 import { UpgradeComponent } from './features/upgrades/upgrade/upgrade.component';
 import { GameDetailsEffects } from './store/gameDetails/gameDetails.effects';
+import { animalsReducer } from './store/animals';
+import { AnimalsComponent } from './features/upgrades/animals/animals.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { GameDetailsEffects } from './store/gameDetails/gameDetails.effects';
     UpgradesComponent,
     GameDetailsComponent,
     UpgradeComponent,
+    AnimalsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { GameDetailsEffects } from './store/gameDetails/gameDetails.effects';
       {
         gameDetails: gameDetailsReducer,
         currentLevel: currentLevelReducer,
+        animals: animalsReducer,
       },
       {}
     ),

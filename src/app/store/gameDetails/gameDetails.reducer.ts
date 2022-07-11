@@ -10,7 +10,6 @@ export interface Upgrade {
   readonly displayName: string;
   multiplier: number;
   level: number;
-  isLevelAvailable: boolean;
 }
 
 export type GameDetailName =
@@ -18,15 +17,30 @@ export type GameDetailName =
   | 'expandingFarm'
   | 'fetilizerQuality';
 
+export type AnimalName =
+  | 'leafcutterAnt'
+  | 'fallArmyworm'
+  | 'froghopper'
+  | 'billbug'
+  | 'grasshoper';
+
 export interface GameDetailsState {
   nameList: GameDetailName[];
+  animalsList: AnimalName[];
   byName: {
-    [key in GameDetailName]: Upgrade;
+    [key in GameDetailName | AnimalName]: Upgrade;
   };
 }
 
 export const initialGameDetailsState: GameDetailsState = {
   nameList: ['marketingStrategies', 'expandingFarm', 'fetilizerQuality'],
+  animalsList: [
+    'leafcutterAnt',
+    'fallArmyworm',
+    'froghopper',
+    'billbug',
+    'grasshoper',
+  ],
   byName: {
     marketingStrategies: {
       initialValue: 1,
@@ -35,7 +49,6 @@ export const initialGameDetailsState: GameDetailsState = {
       initialCost: 30,
       costPerLevel: 1.1,
       increasePerLevel: 0.5,
-      isLevelAvailable: false,
       valueDescription: 'Grass Value',
       displayName: 'Marketing Strategies',
     },
@@ -46,7 +59,6 @@ export const initialGameDetailsState: GameDetailsState = {
       initialCost: 10000,
       costPerLevel: 80,
       increasePerLevel: 1,
-      isLevelAvailable: false,
       valueDescription: 'Grass Count',
       displayName: 'Expanding Farm',
     },
@@ -57,9 +69,58 @@ export const initialGameDetailsState: GameDetailsState = {
       initialCost: 50,
       costPerLevel: 1.15,
       increasePerLevel: 0.1,
-      isLevelAvailable: false,
       valueDescription: 'Growth Rate',
       displayName: 'Fertilizer Quality',
+    },
+    leafcutterAnt: {
+      initialValue: 1,
+      multiplier: 1,
+      level: 0,
+      initialCost: 100,
+      costPerLevel: 1.1,
+      increasePerLevel: 1,
+      valueDescription: 'GPS',
+      displayName: 'Leafcutter Ant',
+    },
+    fallArmyworm: {
+      initialValue: 2,
+      multiplier: 1,
+      level: 0,
+      initialCost: 2500,
+      costPerLevel: 1.1,
+      increasePerLevel: 2,
+      valueDescription: 'GPS',
+      displayName: 'Fall Armyworm',
+    },
+    froghopper: {
+      initialValue: 5,
+      multiplier: 1,
+      level: 0,
+      initialCost: 50000,
+      costPerLevel: 1.1,
+      increasePerLevel: 5,
+      valueDescription: 'GPS',
+      displayName: 'Froghopper',
+    },
+    billbug: {
+      initialValue: 15,
+      multiplier: 1,
+      level: 0,
+      initialCost: 1000000,
+      costPerLevel: 1.1,
+      increasePerLevel: 15,
+      valueDescription: 'GPS',
+      displayName: 'Billbug',
+    },
+    grasshoper: {
+      initialValue: 50,
+      multiplier: 1,
+      level: 0,
+      initialCost: 30000000,
+      costPerLevel: 1.1,
+      increasePerLevel: 50,
+      valueDescription: 'GPS',
+      displayName: 'Grasshoper',
     },
   },
 };

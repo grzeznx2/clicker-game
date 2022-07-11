@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { GameDetailName } from './gameDetails.reducer';
+import { AnimalName, GameDetailName } from './gameDetails.reducer';
 
 const REDUCER = '[GAME DETAILS]';
 
@@ -17,6 +17,9 @@ export const GameDetailsActions = {
   ),
   INCREASE_GAME_DETAIL_LEVEL: createAction(
     `${REDUCER} INCREASE_GAME_DETAIL_LEVEL`,
-    props<{ gameDetailName: GameDetailName; levelsAmount: number }>()
+    props<{
+      gameDetailName: GameDetailName | AnimalName;
+      levelsAmount: number;
+    }>()
   ),
 };

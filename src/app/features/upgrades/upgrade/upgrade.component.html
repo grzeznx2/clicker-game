@@ -6,5 +6,10 @@
   <div>Levels Available: {{ levelsAvailable$ | async }}</div>
   <div>{{ upgrade.valueDescription }}: {{ value$ | async }}</div>
   <div>All levels cost: {{ allLevelsCost$ | async }}</div>
-  <button (click)="increaseGameDetailLevel()">LVL +1</button>
+  <button
+    (click)="increaseGameDetailLevel()"
+    [disabled]="!((levelsAvailable$ | async)! > 0)"
+  >
+    LVL +1
+  </button>
 </div>

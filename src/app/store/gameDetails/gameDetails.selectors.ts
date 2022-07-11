@@ -1,36 +1,37 @@
+// import { AnimalName } from '../animals';
 import { AppState } from '../app.state';
 import { selectMoney } from '../currentLevel/currentLevel.selectors';
-import { GameDetailName, GameDetailsState } from './gameDetails.reducer';
+import { GameDetailName, AnimalName } from './gameDetails.reducer';
 
 export const selectGameDetails = (state: AppState) => state.gameDetails;
 
 export const selectGameDetailByName =
-  (gameDetailName: GameDetailName) => (state: AppState) =>
+  (gameDetailName: GameDetailName | AnimalName) => (state: AppState) =>
     state.gameDetails.byName[gameDetailName];
 
 export const selectGameDetailValue =
-  (gameDetailName: GameDetailName) => (state: AppState) => {
+  (gameDetailName: GameDetailName | AnimalName) => (state: AppState) => {
     const { initialValue, level, increasePerLevel, multiplier } =
       state.gameDetails.byName[gameDetailName];
     return (initialValue + level * increasePerLevel) * multiplier;
   };
 
 export const selectGameDetailCost =
-  (gameDetailName: GameDetailName) => (state: AppState) => {
+  (gameDetailName: GameDetailName | AnimalName) => (state: AppState) => {
     const { initialCost, level, costPerLevel } =
       state.gameDetails.byName[gameDetailName];
     return initialCost * costPerLevel ** level;
   };
 
 export const selectGameDetailNextLevelIncrease =
-  (gameDetailName: GameDetailName) => (state: AppState) => {
+  (gameDetailName: GameDetailName | AnimalName) => (state: AppState) => {
     const { increasePerLevel, level, initialValue } =
       state.gameDetails.byName[gameDetailName];
     return initialValue + increasePerLevel * (level + 1);
   };
 
 export const selectGameDetailLevelsAvailable =
-  (gameDetailName: GameDetailName) => (state: AppState) => {
+  (gameDetailName: GameDetailName | AnimalName) => (state: AppState) => {
     const money = selectMoney(state);
 
     const { initialCost, level, costPerLevel } =
@@ -52,7 +53,7 @@ export const selectGameDetailLevelsAvailable =
 
 export const selectGameDetailLevelsCost =
   (
-    gameDetailName: GameDetailName,
+    gameDetailName: GameDetailName | AnimalName,
     levelsAmount: number,
     includeAddedLevels: boolean = false
   ) =>

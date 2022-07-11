@@ -1,0 +1,7 @@
+<ng-container *ngIf="gameDetails$ | async as gameDetails">
+  <app-upgrade
+    *ngFor="let name of gameDetails.animalsList"
+    [upgradeName]="name"
+    [upgrade]="gameDetails.byName[name]"
+  ></app-upgrade>
+</ng-container>

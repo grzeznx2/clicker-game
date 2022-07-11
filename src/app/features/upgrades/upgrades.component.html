@@ -1,1 +1,6 @@
-<app-game-details></app-game-details>
+<button (click)="setSection('GAME DETAILS')">Game Details</button>
+<button (click)="setSection('ANIMALS')">Animals</button>
+<ng-container [ngSwitch]="selectedSection">
+  <app-game-details *ngSwitchCase="'GAME DETAILS'"></app-game-details>
+  <app-animals *ngSwitchCase="'ANIMALS'"></app-animals>
+</ng-container>

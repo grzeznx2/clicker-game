@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AnimalName } from 'src/app/store/animals';
 import { AppState } from 'src/app/store/app.state';
 import {
   GameDetailName,
@@ -22,7 +23,7 @@ import {
 })
 export class UpgradeComponent implements OnInit {
   @Input() public upgrade!: Upgrade;
-  @Input() public upgradeName!: GameDetailName;
+  @Input() public upgradeName!: GameDetailName | AnimalName;
   public value$!: Observable<number>;
   public cost$!: Observable<number>;
   public nextLevelIncrease$!: Observable<number>;
@@ -49,7 +50,7 @@ export class UpgradeComponent implements OnInit {
     this.store.dispatch(
       GameDetailsActions.INCREASE_GAME_DETAIL_LEVEL({
         gameDetailName: this.upgradeName,
-        levelsAmount: 2,
+        levelsAmount: 1,
       })
     );
   }

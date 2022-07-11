@@ -1,8 +1,9 @@
-<div>
+<div class="upgrade">
   <div>{{ upgrade.displayName }}</div>
   <div>Level: {{ upgrade.level }}</div>
   <div>Cost: {{ cost$ | async }}</div>
   <div>Next Level: {{ nextLevelIncrease$ | async }}</div>
   <div>Levels Available: {{ levelsAvailable$ | async }}</div>
   <div>{{ upgrade.valueDescription }}: {{ value$ | async }}</div>
+  <button>LVL +1</button>
 </div>

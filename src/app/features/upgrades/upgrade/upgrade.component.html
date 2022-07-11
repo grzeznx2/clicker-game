@@ -5,5 +5,5 @@
   <div>Next Level: {{ nextLevelIncrease$ | async }}</div>
   <div>Levels Available: {{ levelsAvailable$ | async }}</div>
   <div>{{ upgrade.valueDescription }}: {{ value$ | async }}</div>
-  <button>LVL +1</button>
+  <button (click)="increaseGameDetailLevel()">LVL +1</button>
 </div>

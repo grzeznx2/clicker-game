@@ -101,5 +101,18 @@ export const gameDetailsReducer = createReducer(
         level: state.byName.expandingFarm.level + 1,
       },
     },
-  }))
+  })),
+  on(
+    GameDetailsActions.INCREASE_GAME_DETAIL_LEVEL,
+    (state, { gameDetailName, levelsAmount }) => ({
+      ...state,
+      byName: {
+        ...state.byName,
+        [gameDetailName]: {
+          ...state.byName[gameDetailName],
+          level: state.byName[gameDetailName].level + levelsAmount,
+        },
+      },
+    })
+  )
 );

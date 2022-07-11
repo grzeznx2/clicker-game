@@ -12,20 +12,4 @@ export class AppComponent {
   title = 'clicker-game';
 
   constructor(private readonly store: Store<AppState>) {}
-
-  public increaseFQLevel() {
-    this.store.dispatch(
-      GameDetailsActions.INCREASE_FERTILIZER_QUALITY_LEVEL({ value: 1 })
-    );
-  }
-
-  public increaseEFLevel() {
-    this.store.dispatch(GameDetailsActions.INCREASE_EXPANDING_FARM_LEVEL());
-  }
-
-  public increaseMSLevel() {
-    this.store.dispatch(
-      GameDetailsActions.INCREASE_MARKETING_STRATEGIES_LEVEL({ value: 1 })
-    );
-  }
 }

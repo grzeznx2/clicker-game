@@ -2,7 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
-import { GameDetailName, Upgrade } from 'src/app/store/gameDetails';
+import {
+  GameDetailName,
+  GameDetailsActions,
+  Upgrade,
+} from 'src/app/store/gameDetails';
 import {
   selectGameDetailCost,
   selectGameDetailLevelsAvailable,
@@ -16,8 +20,8 @@ import {
   styleUrls: ['./upgrade.component.scss'],
 })
 export class UpgradeComponent implements OnInit {
-  @Input() upgrade!: Upgrade;
-  @Input() upgradeName!: GameDetailName;
+  @Input() public upgrade!: Upgrade;
+  @Input() public upgradeName!: GameDetailName;
   public value$!: Observable<number>;
   public cost$!: Observable<number>;
   public nextLevelIncrease$!: Observable<number>;
@@ -25,7 +29,7 @@ export class UpgradeComponent implements OnInit {
 
   constructor(private readonly store: Store<AppState>) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.value$ = this.store.select(selectGameDetailValue(this.upgradeName));
     this.cost$ = this.store.select(selectGameDetailCost(this.upgradeName));
     this.nextLevelIncrease$ = this.store.select(
@@ -33,6 +37,15 @@ export class UpgradeComponent implements OnInit {
     );
     this.levelsAvailable$ = this.store.select(
       selectGameDetailLevelsAvailable(this.upgradeName)
+    );
+  }
+
+  public increaseGameDetailLevel() {
+    this.store.dispatch(
+      GameDetailsActions.INCREASE_GAME_DETAIL_LEVEL({
+        gameDetailName: this.upgradeName,
+        levelsAmount: 1,
+      })
     );
   }
 }

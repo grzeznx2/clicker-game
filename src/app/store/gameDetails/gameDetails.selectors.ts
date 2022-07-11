@@ -50,6 +50,32 @@ export const selectGameDetailLevelsAvailable =
     return levelsAvailable;
   };
 
+export const selectGameDetailLevelsCost =
+  (
+    gameDetailName: GameDetailName,
+    levelsAmount: number,
+    includeAddedLevels: boolean = false
+  ) =>
+  (state: AppState) => {
+    const { initialCost, level, costPerLevel } =
+      state.gameDetails.byName[gameDetailName];
+
+    const calcLevelPrice = (level: number) =>
+      initialCost * costPerLevel ** level;
+
+    const realLevel = includeAddedLevels ? level - levelsAmount : level;
+
+    let levelsCounted = 1;
+    let totalPrice = calcLevelPrice(realLevel);
+
+    while (levelsCounted < levelsAmount) {
+      totalPrice += calcLevelPrice(realLevel + levelsCounted);
+      levelsCounted++;
+    }
+
+    return totalPrice;
+  };
+
 export const selectExpadingFarm = (state: AppState) =>
   state.gameDetails.byName.expandingFarm;
 

@@ -10,6 +10,7 @@ import {
 import {
   selectGameDetailCost,
   selectGameDetailLevelsAvailable,
+  selectGameDetailLevelsCost,
   selectGameDetailNextLevelIncrease,
   selectGameDetailValue,
 } from 'src/app/store/gameDetails/gameDetails.selectors';
@@ -26,6 +27,7 @@ export class UpgradeComponent implements OnInit {
   public cost$!: Observable<number>;
   public nextLevelIncrease$!: Observable<number>;
   public levelsAvailable$!: Observable<number>;
+  public allLevelsCost$!: Observable<number>;
 
   constructor(private readonly store: Store<AppState>) {}
 
@@ -38,13 +40,16 @@ export class UpgradeComponent implements OnInit {
     this.levelsAvailable$ = this.store.select(
       selectGameDetailLevelsAvailable(this.upgradeName)
     );
+    this.allLevelsCost$ = this.store.select(
+      selectGameDetailLevelsCost(this.upgradeName, 1)
+    );
   }
 
   public increaseGameDetailLevel() {
     this.store.dispatch(
       GameDetailsActions.INCREASE_GAME_DETAIL_LEVEL({
         gameDetailName: this.upgradeName,
-        levelsAmount: 1,
+        levelsAmount: 2,
       })
     );
   }

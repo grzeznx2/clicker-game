@@ -4,6 +4,10 @@ const REDUCER = '[CURRENT LEVEL]';
 
 export const CurrentLevelActions = {
   EARN_MONEY: createAction(`${REDUCER} EARN_MONEY`, props<{ value: number }>()),
+  SPEND_MONEY: createAction(
+    `${REDUCER} SPEND_MONEY`,
+    props<{ value: number }>()
+  ),
   HARVEST_GRASS: createAction(
     `${REDUCER} HARVEST_GRASS`,
     props<{ value: number }>()

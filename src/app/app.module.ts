@@ -17,6 +17,7 @@ import { CurrentLevelEffects } from './store/currentLevel/currentLevel.effects';
 import { UpgradesComponent } from './features/upgrades/upgrades.component';
 import { GameDetailsComponent } from './features/upgrades/game-details/game-details.component';
 import { UpgradeComponent } from './features/upgrades/upgrade/upgrade.component';
+import { GameDetailsEffects } from './store/gameDetails/gameDetails.effects';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { UpgradeComponent } from './features/upgrades/upgrade/upgrade.component'
       {}
     ),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([CurrentLevelEffects]),
+    EffectsModule.forRoot([CurrentLevelEffects, GameDetailsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
